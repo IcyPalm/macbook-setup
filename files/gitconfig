@@ -1,0 +1,19 @@
+[core]
+	excludesfile = /Users/marijn/.global.gitignore
+	editor = /Applications/Sublime\\ Text.app/Contents/SharedSupport/bin/subl -n -w
+[user]
+	name = Marijn Pool
+	email = info@marijnpool.nl
+	signingkey = 8F6BDFCC7B1B17665D8C5EE0020381F84F0885C0
+[commit]
+	gpgsign = true
+[pull]
+	rebase = true
+[diff]
+	algorithm = histogram
+[branch]
+        sort = -committerdate
+[merge]
+	conflictstyle = diff3
+[init]
+	defaultBranch = main

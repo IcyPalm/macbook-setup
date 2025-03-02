@@ -1,0 +1,6 @@
+# Added by Toolbox App
+export PATH="$PATH:/Users/marijn/Library/Application Support/JetBrains/Toolbox/scripts"
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+export KUBE_EDITOR='open -a "Sublime Text" --wait'export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"

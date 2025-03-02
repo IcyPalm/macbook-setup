@@ -1,0 +1,14 @@
+difftastic
+direnv
+fzf
+gh
+git
+gnupg
+moreutils
+pinentry-mac
+poetry
+pwgen
+ripgrep
+syncthing
+ykman
+yt-dlp

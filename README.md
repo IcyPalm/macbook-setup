@@ -7,6 +7,9 @@ The order of the steps is critical to make sure everything works as expected
 ## iTerm2
 Since we are going to use this to install all other things: download and install [iTerm2 from here](https://iterm2.com/)
 
+Make sure to set proper settings dir:
+![iTerm settings](images/iterm-settings.png)
+
 
 ## OMZ
 Oh My Zsh is a must for me, get that [from here](https://ohmyz.sh/#install)
@@ -16,10 +19,12 @@ Oh My Zsh is a must for me, get that [from here](https://ohmyz.sh/#install)
 Now the terminal is fixed, lets (install Homebrew)[https://brew.sh/] to install all other software
 
 Install casks:
-```~/dotfiles/install-homebrew-casks.sh```
+```~/dotfiles/install-homebrew.sh```
 
-Install formulae:
-```~/dotfiles/install-homebrew-formulae.sh```
+## Powerlevel10K
+Install powerlevel10K
+
+https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#oh-my-zsh
 
 ### Enable syncthing
 Run
@@ -40,3 +45,30 @@ Prompt answers:
 - `Do you want to enable fuzzy auto-completion? ([y]/n)` → `y`
 - `Do you want to enable key bindings? ([y]/n)` → `y`
 - `Do you want to update your shell configuration files? ([y]/n)` → `n`
+
+## Finder settings I like
+![Finder general](images/finder-01general.png)
+![Finder tags](images/finder-02tags.png)
+![Finder sidebar](images/finder-03sidebar.png)
+![Finder advanced](images/finder-04advanced.png)
+
+
+
+## Random notes
+
+Dash:
+
+- Activate and install docsets
+
+Dock settings:
+
+- Show suggested and recent apps: off
+
+NoTunes:
+
+- Toevoegen aan startup items en dan
+- `defaults write digital.twisted.noTunes replacement /Applications/Spotify.app`
+
+
+## TODO:
+home/end

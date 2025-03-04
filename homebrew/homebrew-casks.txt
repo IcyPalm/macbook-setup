@@ -6,7 +6,6 @@ bluesnooze
 chatgpt
 dash
 devutils
-farrago
 firefox
 font-meslo-for-powerlevel10k
 font-source-code-pro
@@ -16,18 +15,12 @@ jetbrains-toolbox
 karabiner-elements
 libreoffice
 logi-options+
-microsoft-office
 notunes
 obsidian
-signal
 spotify
 sublime-merge
 sublime-text
-telegram
-textual
-thunderbird
 transmit
 transnomino
 visual-studio-code
 vlc
-whatsapp

@@ -3,6 +3,8 @@ This repo contains my personal files for setting up a (new) Mac, both personal a
 
 The order of the steps is critical to make sure everything works as expected
 
+Inspired by [Marijke](https://marijkeluttekes.dev/) and her [dotfiles setup](https://gitlab.com/mhlut/dotfiles/)
+
 
 ## iTerm2
 Since we are going to use this to install all other things: download and install [iTerm2 from here](https://iterm2.com/)
@@ -48,6 +50,9 @@ Prompt answers:
 - `Do you want to enable fuzzy auto-completion? ([y]/n)` → `y`
 - `Do you want to enable key bindings? ([y]/n)` → `y`
 - `Do you want to update your shell configuration files? ([y]/n)` → `n`
+
+## Setup dotfiles
+Run ```~/dotfiles/setup-dotfiles.sh```
 
 ## Finder settings I like
 ![Finder general](images/finder-01general.png)

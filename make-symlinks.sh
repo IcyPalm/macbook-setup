@@ -33,12 +33,21 @@ echo -n "Changing to $FILES_DIR …"
 cd $FILES_DIR
 echo "done"
 
-# Move any existing dotfiles in homedir to the backup directory, then
-# create symlinks from the homedir to any files in the dotfiles
-# directory.
-for item in *; do
-    echo "Moving any existing dotfiles from ~ to $BAK_DIR"
-    mv ~/.$item $BAK_DIR
-    echo "Creating symlink to $item in home directory."
-    ln -s $FILES_DIR/$item ~/.$item
+# Move existing dotfiles to backup and create symlinks
+find . -type f | while read -r file; do
+    # Remove leading './' from filename
+    relative_path="${file#./}"
+
+    # Define the target location in the home directory
+    target="$HOME/.$relative_path"
+
+    # Ensure the parent directory exists
+    target_dir=$(dirname "$target")
+    mkdir -p "$target_dir"
+
+    echo "Moving existing dotfile from $target to $BAK_DIR if it exists"
+    mv "$target" "$BAK_DIR" 2>/dev/null
+
+    echo "Creating symlink: $target -> $FILES_DIR/$relative_path"
+    ln -s "$FILES_DIR/$relative_path" "$target"
 done

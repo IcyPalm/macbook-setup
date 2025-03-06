@@ -33,8 +33,21 @@ echo -n "Changing to $FILES_DIR …"
 cd $FILES_DIR
 echo "done"
 
-# Move existing dotfiles to backup and create symlinks
-find . -type f | while read -r file; do
+# Special handling for Karabiner (symlink the whole directory)
+# See documentation about this: https://karabiner-elements.pqrs.org/docs/manual/misc/configuration-file-path/
+KARABINER_TARGET="$HOME/.config/karabiner"
+KARABINER_SOURCE="$FILES_DIR/config/karabiner"
+
+if [ -d "$KARABINER_SOURCE" ]; then
+    echo "Handling Karabiner config: moving existing ~/.config/karabiner to backup"
+    mv "$KARABINER_TARGET" "$BAK_DIR" 2>/dev/null
+
+    echo "Creating symlink for Karabiner: $KARABINER_TARGET -> $KARABINER_SOURCE"
+    ln -s "$KARABINER_SOURCE" "$KARABINER_TARGET"
+fi
+
+Move existing dotfiles to backup and create symlinks (excluding Karabiner)
+find . -type f ! -path "./config/karabiner/*" | while read -r file; do
     # Remove leading './' from filename
     relative_path="${file#./}"
 

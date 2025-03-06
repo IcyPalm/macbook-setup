@@ -33,28 +33,37 @@ is_cask_installed() {
 # Function to display interactive exclusion menu
 select_casks_to_exclude() {
     local cask_file=$1
-    local excluded_casks=()
     local options=($(cat "$cask_file"))
-    local final_casks=()
+    local selected_casks=()
     
-    echo "Select casks you DO NOT want to install (enter numbers separated by spaces):"
-    for i in "${!options[@]}"; do
-        echo "$((i+1))) ${options[i]}"
-    done
-    read -r selections
+    echo "Installing gum for interactive selection..."
+    brew install gum || echo "Failed to install gum, falling back to manual selection."
     
-    for num in $selections; do
-        excluded_casks+=("${options[$((num-1))]}")
-    done
-    
-    for cask in "${options[@]}"; do
-        if [[ ! " ${excluded_casks[@]} " =~ " $cask " ]]; then
-            final_casks+=("$cask")
-        fi
-    done
+    if command -v gum &> /dev/null; then
+        echo "Select casks to install (use space to toggle selection, enter to confirm):"
+        selected_casks=($(printf "%s\n" "${options[@]}" | gum choose --no-limit))
+    else
+        echo "gum not found. Using manual selection."
+        echo "Select casks you DO NOT want to install (enter numbers separated by spaces):"
+        for i in "${!options[@]}"; do
+            echo "$((i+1))) ${options[i]}"
+        done
+        read -r selections
+        
+        local excluded_casks=()
+        for num in $selections; do
+            excluded_casks+=("${options[$((num-1))]}")
+        done
+        
+        for cask in "${options[@]}"; do
+            if [[ ! " ${excluded_casks[@]} " =~ " $cask " ]]; then
+                selected_casks+=("$cask")
+            fi
+        done
+    fi
 
-    echo "Installing casks: ${final_casks[@]}"
-    for cask in "${final_casks[@]}"; do
+    echo "Installing selected casks: ${selected_casks[@]}"
+    for cask in "${selected_casks[@]}"; do
         if ! is_cask_installed "$cask"; then
             echo "Installing $cask..."
             brew install --cask "$cask"
@@ -73,6 +82,9 @@ fi
 echo "Updating Homebrew..."
 brew update
 
+echo "Ensuring gum is installed..."
+brew install gum || echo "Failed to install gum, proceeding with manual selection."
+
 # Install formulae
 if [ -f "$FORMULAE_FILE" ]; then
     echo "Installing formulae..."
@@ -88,7 +100,7 @@ else
     echo "Formulae file not found: $FORMULAE_FILE"
 fi
 
-# Install casks with exclusion menu
+# Install casks with interactive selection
 if [ -f "$CASKS_FILE" ]; then
     echo "Installing casks..."
     select_casks_to_exclude "$CASKS_FILE"

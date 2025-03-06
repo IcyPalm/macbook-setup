@@ -4,43 +4,6 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "New Rule (change left_shift+caps_lock to page_down, right_shift+caps_lock to left_command+mission_control)",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "caps_lock",
-                                    "modifiers": {
-                                        "mandatory": ["left_shift"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "page_down",
-                                        "modifiers": []
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "caps_lock",
-                                    "modifiers": {
-                                        "mandatory": ["right_shift"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "apple_vendor_keyboard_key_code": "mission_control",
-                                        "modifiers": ["left_command"]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "Control+Shift+Esc Opens Activity Monitor",
                         "manipulators": [
                             {
@@ -500,7 +463,7 @@
                     ]
                 }
             ],
-            "name": "Default profile",
+            "name": "Marijn",
             "selected": true,
             "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
         }

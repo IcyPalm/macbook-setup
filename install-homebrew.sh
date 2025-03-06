@@ -30,6 +30,40 @@ is_cask_installed() {
     brew list --cask | grep -q "^$1$"
 }
 
+# Function to display interactive exclusion menu
+select_casks_to_exclude() {
+    local cask_file=$1
+    local excluded_casks=()
+    local options=($(cat "$cask_file"))
+    local final_casks=()
+    
+    echo "Select casks you DO NOT want to install (enter numbers separated by spaces):"
+    for i in "${!options[@]}"; do
+        echo "$((i+1))) ${options[i]}"
+    done
+    read -r selections
+    
+    for num in $selections; do
+        excluded_casks+=("${options[$((num-1))]}")
+    done
+    
+    for cask in "${options[@]}"; do
+        if [[ ! " ${excluded_casks[@]} " =~ " $cask " ]]; then
+            final_casks+=("$cask")
+        fi
+    done
+
+    echo "Installing casks: ${final_casks[@]}"
+    for cask in "${final_casks[@]}"; do
+        if ! is_cask_installed "$cask"; then
+            echo "Installing $cask..."
+            brew install --cask "$cask"
+        else
+            echo "$cask is already installed, skipping."
+        fi
+    done
+}
+
 # Ensure Homebrew is installed
 if ! command -v brew &> /dev/null; then
     echo "Homebrew not found. Installing..."
@@ -54,17 +88,10 @@ else
     echo "Formulae file not found: $FORMULAE_FILE"
 fi
 
-# Install casks
+# Install casks with exclusion menu
 if [ -f "$CASKS_FILE" ]; then
     echo "Installing casks..."
-    while IFS= read -r cask; do
-        if ! is_cask_installed "$cask"; then
-            echo "Installing $cask..."
-            brew install --cask "$cask"
-        else
-            echo "$cask is already installed, skipping."
-        fi
-    done < "$CASKS_FILE"
+    select_casks_to_exclude "$CASKS_FILE"
 else
     echo "Casks file not found: $CASKS_FILE"
 fi
@@ -73,14 +100,7 @@ fi
 if [ "$INSTALL_PERSONAL" = true ]; then
     if [ -f "$PERSONAL_CASKS_FILE" ]; then
         echo "Installing personal casks..."
-        while IFS= read -r cask; do
-            if ! is_cask_installed "$cask"; then
-                echo "Installing $cask..."
-                brew install --cask "$cask"
-            else
-                echo "$cask is already installed, skipping."
-            fi
-        done < "$PERSONAL_CASKS_FILE"
+        select_casks_to_exclude "$PERSONAL_CASKS_FILE"
     else
         echo "Personal casks file not found: $PERSONAL_CASKS_FILE"
     fi

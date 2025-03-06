@@ -1,12 +1,7 @@
 discord
 farrago
 lightburn
-microsoft-office
 orcaslicer
 prusaslicer
-signal
 steam
-telegram
 textual
-thunderbird
-whatsapp

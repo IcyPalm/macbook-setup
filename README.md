@@ -14,17 +14,20 @@ Make sure to set proper settings dir:
 ## OMZ
 Oh My Zsh is a must for me, get that [from here](https://ohmyz.sh/#install)
 
-
-## Homebrew
-Now the terminal is fixed, lets (install Homebrew)[https://brew.sh/] to install all other software
-
-Install casks:
-```~/dotfiles/install-homebrew.sh```
-
 ## Powerlevel10K
 Install powerlevel10K
 
 https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#oh-my-zsh
+
+## Homebrew
+Now the terminal is fixed, lets (install Homebrew)[https://brew.sh/] to install all other software
+
+Install homebrew, update it and install all formulae and (selected)casks:
+```~/dotfiles/install-homebrew.sh```
+
+If on a personal device you can add `--personal` to add non-work casks
+
+
 
 ### Enable syncthing
 Run
@@ -57,18 +60,13 @@ Prompt answers:
 ## Random notes
 
 Dash:
-
 - Activate and install docsets
 
 Dock settings:
-
 - Show suggested and recent apps: off
 
 NoTunes:
-
 - Toevoegen aan startup items en dan
 - `defaults write digital.twisted.noTunes replacement /Applications/Spotify.app`
 
 
-## TODO:
-home/end

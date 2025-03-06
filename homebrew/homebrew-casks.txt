@@ -15,12 +15,17 @@ jetbrains-toolbox
 karabiner-elements
 libreoffice
 logi-options+
+microsoft-office
 notunes
 obsidian
+signal
 spotify
 sublime-merge
 sublime-text
+telegram
+thunderbird
 transmit
 transnomino
 visual-studio-code
 vlc
+whatsapp

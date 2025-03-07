@@ -63,12 +63,17 @@ Run ```~/dotfiles/setup-dotfiles.sh```
 
 
 ## Random notes
+Loop:
+- import keybinds from `Loop Keybinds.json` 
 
 Dash:
 - Activate and install docsets
 
 Dock settings:
 - Show suggested and recent apps: off
+
+FireFox:
+- turn off mediakeys: enter `about:config` in the URL bar and set `media.hardwaremediakeys.enabled` to `false`
 
 NoTunes:
 - Toevoegen aan startup items en dan

@@ -15,6 +15,7 @@ jetbrains-toolbox
 karabiner-elements
 libreoffice
 logi-options+
+loop
 microsoft-office
 notunes
 obsidian

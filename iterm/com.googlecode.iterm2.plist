@@ -716,7 +716,7 @@ The script should do this: \(ai.prompt)</string>
 	<key>Print In Black And White</key>
 	<true/>
 	<key>ShowFullScreenTabBar</key>
-	<true/>
+	<false/>
 	<key>ShowMarksInScrollbar</key>
 	<false/>
 	<key>SoundForEsc</key>

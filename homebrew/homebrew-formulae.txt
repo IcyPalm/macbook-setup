@@ -7,8 +7,11 @@ gnupg
 moreutils
 pinentry-mac
 poetry
+pre-commit
+prettier
 pwgen
 ripgrep
 syncthing
+uv yarn
 ykman
 yt-dlp

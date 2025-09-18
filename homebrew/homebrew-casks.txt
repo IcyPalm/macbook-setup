@@ -1,4 +1,5 @@
 1password
+1password-cli
 airfoil
 alfred
 alt-tab
@@ -7,6 +8,7 @@ chatgpt
 dash
 devutils
 firefox
+font-maple-mono-nf
 font-meslo-for-powerlevel10k
 font-source-code-pro
 google-chrome
@@ -14,8 +16,11 @@ gpg-suite
 jetbrains-toolbox
 karabiner-elements
 libreoffice
+localsend
 logi-options+
 loop
+meld
+microsoft-auto-update
 microsoft-office
 notunes
 obsidian
@@ -24,6 +29,7 @@ spotify
 sublime-merge
 sublime-text
 telegram
+the-unarchiver
 thunderbird
 transmit
 transnomino

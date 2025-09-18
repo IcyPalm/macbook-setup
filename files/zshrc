@@ -89,6 +89,12 @@ source $ZSH/oh-my-zsh.sh
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
+# NodeJS
+export PATH="/opt/homebrew/opt/node@20/bin:$PATH"
+
+# Python UV
+eval "$(uv generate-shell-completion zsh)"
+
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
@@ -142,17 +148,31 @@ alias zshprofile="subl ~/.zshrc"
 # System help aliases
 alias ports="lsof -PiTCP -sTCP:LISTEN"
 
+# Listing files defines
+alias la='ls -lah'
+alias ll='ls -lh'
+
 # Docker things
 alias dceweb="docker compose exec web bash"
+alias dcedj="docker compose exec django bash"
 
 # Other things
 alias b64="base64_encode"
 alias b64d="base64_decode"
 
+# Gpg
+alias fixgpg='gpgconf --kill gpg-agent && gpg-connect-agent reloadagent /bye'
+
 # TODO: check this on every machine
 export PATH=$PATH:/Users/marijn/.local/bin
 
+## [Completion]
+## Completion scripts setup. Remove the following line to uninstall
+[[ -f /Users/marijn/.dart-cli-completion/zsh-config.zsh ]] && . /Users/marijn/.dart-cli-completion/zsh-config.zsh || true
+## [/Completion]
+
+export SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
+  [[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-export PATH="/opt/homebrew/opt/node@20/bin:$PATH"

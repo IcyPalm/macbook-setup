@@ -4,7 +4,7 @@
 [user]
 	name = Marijn Pool
 	email = info@marijnpool.nl
-	signingkey = 8F6BDFCC7B1B17665D8C5EE0020381F84F0885C0
+	signingkey = 6415E38D62B486E3
 [commit]
 	gpgsign = true
 [pull]

@@ -151,6 +151,7 @@ alias ports="lsof -PiTCP -sTCP:LISTEN"
 alias la='ls -lah'
 alias ll='ls -lh'
 
+
 # Docker things
 alias dceweb="docker compose exec web bash"
 alias dcedj="docker compose exec django bash"

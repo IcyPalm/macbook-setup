@@ -73,3 +73,23 @@ find . -type f ! -path "./config/karabiner/*" | while read -r file; do
         ln -s "$FILES_DIR/$relative_path" "$target"
     fi
 done
+
+# ── Sleepwatcher ──────────────────────────────────────────────────────────────
+if command -v brew &>/dev/null && brew list sleepwatcher &>/dev/null 2>&1; then
+    echo "Starting sleepwatcher service…"
+    brew services start sleepwatcher
+
+    echo "Applying pmset settings to prevent wake-in-bag (requires sudo)…"
+    sudo pmset -a womp 0
+    sudo pmset -a powernap 0
+
+    if [[ ! -f "$HOME/.bluetooth-sleep-devices" ]]; then
+        echo ""
+        echo "WARNING: ~/.bluetooth-sleep-devices not found."
+        echo "    Create it with one Bluetooth address per line, e.g.:"
+        echo "      bc-87-fa-c2-39-24"
+        echo "    Find your device address with: blueutil --paired"
+    fi
+else
+    echo "sleepwatcher not installed — skipping sleep service setup."
+fi

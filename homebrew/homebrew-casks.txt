@@ -3,7 +3,6 @@
 airfoil
 alfred
 alt-tab
-bluesnooze
 chatgpt
 dash
 devutils

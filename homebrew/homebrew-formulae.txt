@@ -1,4 +1,5 @@
 ansible
+blueutil
 difftastic
 direnv
 fzf
@@ -12,6 +13,7 @@ pre-commit
 prettier
 pwgen
 ripgrep
+sleepwatcher
 syncthing
 uv yarn
 ykman

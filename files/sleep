@@ -1,0 +1,11 @@
+#!/bin/zsh
+set -euo pipefail
+PATH=/opt/homebrew/bin:/usr/bin:/bin
+
+CONFIG="$HOME/.bluetooth-sleep-devices"
+[[ -f "$CONFIG" ]] || exit 0
+
+while IFS= read -r addr || [[ -n "$addr" ]]; do
+    [[ -z "$addr" || "$addr" == \#* ]] && continue
+    blueutil --disconnect "$addr" >/dev/null 2>&1 || true
+done < "$CONFIG"

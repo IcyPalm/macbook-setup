@@ -2,19 +2,25 @@ ansible
 blueutil
 difftastic
 direnv
+ffmpeg
 fzf
 gh
 git
 gnupg
+gum
+hugo
 moreutils
+ollama
 pinentry-mac
 poetry
 pre-commit
 prettier
 pwgen
+qrencode
 ripgrep
 sleepwatcher
 syncthing
-uv yarn
+uv
+yarn
 ykman
 yt-dlp

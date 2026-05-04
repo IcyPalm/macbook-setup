@@ -3,6 +3,7 @@
 airfoil
 alfred
 alt-tab
+bruno
 chatgpt
 dash
 devutils
@@ -21,6 +22,7 @@ loop
 meld
 microsoft-auto-update
 microsoft-office
+naps2
 notunes
 obsidian
 signal

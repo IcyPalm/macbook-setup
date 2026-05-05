@@ -2,10 +2,27 @@
 set -euo pipefail
 PATH=/opt/homebrew/bin:/usr/bin:/bin
 
-CONFIG="$HOME/.bluetooth-sleep-devices"
-[[ -f "$CONFIG" ]] || exit 0
+ADDR="bc-87-fa-c2-39-24"
+PIDFILE="$HOME/.cache/bt-guard-more-muffle.pid"
 
-while IFS= read -r addr || [[ -n "$addr" ]]; do
-    [[ -z "$addr" || "$addr" == \#* ]] && continue
-    blueutil --disconnect "$addr" >/dev/null 2>&1 || true
-done < "$CONFIG"
+mkdir -p "$HOME/.cache"
+
+# Disconnect once immediately
+blueutil --disconnect "$ADDR" || true
+
+# If guard already running, don't start another
+if [[ -f "$PIDFILE" ]] && kill -0 "$(cat "$PIDFILE")" 2>/dev/null; then
+  exit 0
+fi
+
+# Start a background loop that keeps kicking it off while asleep
+(
+  while true; do
+    if blueutil --is-connected "$ADDR" | grep -q '^1$'; then
+      blueutil --disconnect "$ADDR" || true
+    fi
+    sleep 1
+  done
+) >/dev/null 2>&1 &
+
+echo $! > "$PIDFILE"

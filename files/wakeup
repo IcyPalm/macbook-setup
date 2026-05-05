@@ -1,2 +1,16 @@
 #!/bin/zsh
-true
+set -euo pipefail
+PATH=/opt/homebrew/bin:/usr/bin:/bin
+
+ADDR="bc-87-fa-c2-39-24"
+PIDFILE="$HOME/.cache/bt-guard-more-muffle.pid"
+
+if [[ -f "$PIDFILE" ]]; then
+  kill "$(cat "$PIDFILE")" 2>/dev/null || true
+  rm -f "$PIDFILE"
+fi
+
+# Optional: reconnect on wake (leave commented if you don't want it)
+# sleep 1
+# blueutil --connect "$ADDR" || true
+

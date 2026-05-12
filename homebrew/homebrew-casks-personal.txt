@@ -1,3 +1,4 @@
+audacity
 discord
 farrago
 lightburn
